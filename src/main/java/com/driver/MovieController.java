@@ -9,6 +9,7 @@ import java.util.List;
 
 import java.util.HashMap;
 
+@RequestMapping("movies")
 @RestController
 public class MovieController {
 
@@ -30,8 +31,8 @@ public class MovieController {
 
     }
     @PutMapping("/add-movie-director-pair")
-    public ResponseEntity<String> addMovieDirectorPair(@RequestParam("name") String name, @RequestParam("director") String director) {
-        ms.director_movie(name, director);
+    public ResponseEntity<String> addMovieDirectorPair(@RequestParam("movie") String movie, @RequestParam("director") String director) {
+        ms.director_movie(movie, director);
         return new ResponseEntity<>("Director-Movie pair added Successfully",HttpStatus.CREATED);
     }
 
