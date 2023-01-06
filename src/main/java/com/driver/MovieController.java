@@ -15,14 +15,14 @@ public class MovieController {
     @Autowired
     MovieService ms;
 
-    @PostMapping("/addMovie")
+    @PostMapping("/add-movie")
     public ResponseEntity<String> addMovie(@RequestBody Movie m){
 
         ms.addMovie(m);
         return new ResponseEntity("Movie Added Successfully", HttpStatus.CREATED);
 
     }
-    @PostMapping("/addDirector")
+    @PostMapping("/add-director")
     public ResponseEntity<String> addDirector(@RequestBody Director d){
 
         ms.addDirector(d);
@@ -30,8 +30,8 @@ public class MovieController {
 
     }
     @PutMapping("/add-movie-director-pair")
-    public ResponseEntity<String> addMovieDirectorPair(@RequestParam("moviename") String moviename, @RequestParam("directorname") String directorname) {
-        ms.director_movie(moviename, directorname);
+    public ResponseEntity<String> addMovieDirectorPair(@RequestParam("name") String name, @RequestParam("director") String director) {
+        ms.director_movie(name, director);
         return new ResponseEntity<>("Director-Movie pair added Successfully",HttpStatus.CREATED);
     }
 
@@ -45,9 +45,9 @@ public class MovieController {
         Director d = ms.getdirector(name);
         return new ResponseEntity<>(d,HttpStatus.CREATED);
     }
-    @GetMapping("/get-movies-by-director-name/{name}")
-    public ResponseEntity<List<String>> getMoviesByDirectorName(@PathVariable String name){
-        List<String> movies = ms.getdirectormovies(name);
+    @GetMapping("/get-movies-by-director-name/{director}")
+    public ResponseEntity<List<String>> getMoviesByDirectorName(@PathVariable String director){
+        List<String> movies = ms.getdirectormovies(director);
         return new ResponseEntity<>(movies,HttpStatus.CREATED);
     }
     @GetMapping("/get-all-movies")
