@@ -34,7 +34,7 @@ public class MovieRepository {
 
         if(MovieMap.containsKey(movie) && DirectorMap.containsKey(director)) {
             List<String> DirectorAndMovies = new ArrayList<>();
-            if(DirectorMap.containsKey(director))
+            if(DirectorMovieMap.containsKey(director))
                 DirectorAndMovies= DirectorMovieMap.get(director);
             DirectorAndMovies.add(movie);
             DirectorMovieMap.put(director,DirectorAndMovies);

@@ -9,8 +9,9 @@ import java.util.List;
 
 import java.util.HashMap;
 
-@RequestMapping("movies")
+
 @RestController
+@RequestMapping("movies")
 public class MovieController {
 
     @Autowired
@@ -20,19 +21,19 @@ public class MovieController {
     public ResponseEntity<String> addMovie(@RequestBody Movie m){
 
         ms.addMovie(m);
-        return new ResponseEntity("Movie Added Successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>("Movie Added Successfully", HttpStatus.CREATED);
 
     }
     @PostMapping("/add-director")
     public ResponseEntity<String> addDirector(@RequestBody Director d){
 
         ms.addDirector(d);
-        return new ResponseEntity("Director Added Successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>("Director Added Successfully", HttpStatus.CREATED);
 
     }
     @PutMapping("/add-movie-director-pair")
     public ResponseEntity<String> addMovieDirectorPair(@RequestParam("movie") String movie, @RequestParam("director") String director) {
-        ms.director_movie(movie, director);
+        ms.director_movie(movie,director);
         return new ResponseEntity<>("Director-Movie pair added Successfully",HttpStatus.CREATED);
     }
 
@@ -58,9 +59,9 @@ public class MovieController {
         return new ResponseEntity<>(movies,HttpStatus.CREATED);
     }
     @DeleteMapping("/delete-director-by-name")
-    public ResponseEntity<String> deleteDirectorByName(@RequestParam("directorname") String directorname){
-        ms.removedirector(directorname);
-        return new ResponseEntity<>(directorname + "Movie-Director pair Deleted Successfully",HttpStatus.CREATED);
+    public ResponseEntity<String> deleteDirectorByName(@RequestParam("director") String director){
+        ms.removedirector(director);
+        return new ResponseEntity<>(director + "Movie-Director pair Deleted Successfully",HttpStatus.CREATED);
     }
     @DeleteMapping("/delete-all-directors")
     public ResponseEntity<String> deleteAllDirectors(){
