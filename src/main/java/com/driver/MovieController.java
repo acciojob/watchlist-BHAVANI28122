@@ -47,9 +47,15 @@ public class MovieController {
         Director d = ms.getdirector(name);
         return new ResponseEntity<>(d,HttpStatus.CREATED);
     }
+
     @GetMapping("/get-movies-by-director-name/{director}")
     public ResponseEntity<List<String>> getMoviesByDirectorName(@PathVariable String director){
         List<String> movies = ms.getdirectormovies(director);
+        return new ResponseEntity<>(movies,HttpStatus.CREATED);
+    }
+    @GetMapping("/get-director-by-movie-name/{movie}")
+    public ResponseEntity<String> getDirectorByMovieName(@PathVariable String movie){
+        String movies = ms.getDirectorByMovieName(movie);
         return new ResponseEntity<>(movies,HttpStatus.CREATED);
     }
     @GetMapping("/get-all-movies")

@@ -33,6 +33,9 @@ public class MovieService {
     public List<String> getdirectormovies(String directorname){
         return mr.movies_of_director(directorname);
     }
+    public String getDirectorByMovieName(String name){
+        return mr.getDirectorByMovieName(name);
+    }
     public List<String> movielist(){
         return mr.movielist();
     }

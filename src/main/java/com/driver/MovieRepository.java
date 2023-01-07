@@ -56,6 +56,20 @@ public class MovieRepository {
         }
         return movies;
     }
+    public String getDirectorByMovieName(String movieName){
+        if(MovieMap.containsKey(movieName)){
+            for(String dir: DirectorMovieMap.keySet()){
+                List<String> movielist = DirectorMovieMap.get(dir);
+                for(String m :movielist){
+                    if(m.equals(movieName)){
+                        return dir;
+                    }
+                }
+            }
+            return null;
+        }
+        return null;
+    }
      public List<String> movielist( ){
 
         return new ArrayList<>(MovieMap.keySet());
